@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Packagedate } from '../interfaces/interfacePackagedate';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,7 @@ export class PackagedateService {
         console.log("Primer Servicio");
     }
 
-    cargarPackagedate(){
-        return this.httpClient.get<Packagedate>(this.baseUrl);
+    cargarPackagedate(): Observable<Packagedate[]>{
+        return this.httpClient.get<Packagedate[]>(this.baseUrl);
     }
 }
