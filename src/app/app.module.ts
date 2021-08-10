@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 //ROUTES
 import { APP_ROUTING } from './app.routes';
+
+//SERVICIOS
+import { PackagedateService } from './services/packagedate.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,9 +26,10 @@ import { HomeComponent } from './pages/home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    APP_ROUTING
+    APP_ROUTING,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [PackagedateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

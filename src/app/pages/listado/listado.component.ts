@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Packagedate } from 'src/app/interfaces/interfacePackagedate';
+import { PackagedateService } from 'src/app/services/packagedate.service';
+
 
 @Component({
   selector: 'app-listado',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoComponent implements OnInit {
 
-  constructor() { }
+    // dataSource: Observable<Packagedate[]>;
+
+  constructor(private servicePackagedate: PackagedateService) { 
+    this.servicePackagedate.cargarPackagedate().subscribe(data => console.log(data));
+  }
 
   ngOnInit(): void {
+   
   }
 
 }
