@@ -1,4 +1,4 @@
-<button class="btn btn-primary" mat-flat-button (click)="nuevoPost()">Nuevo Post</button>
+<button class="btn btn-primary" mat-flat-button (click)="nuevoPost()" [routerLink]="['../formulario']">Nuevo Post</button>
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" >

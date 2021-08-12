@@ -24,9 +24,13 @@ export class FormularioComponent implements OnInit {
   }
 
   agregarPost(){
-    let nuevoPostPackageId = new Package(this.tituloInput, this.bodyInput);
-    this.packageDateService.postPackageIdPost(nuevoPostPackageId).subscribe(respuesta => this.packageCard=(respuesta));
-    this.verCard = true;
+    if(this.titulo != "" && this.bodyInput != ""){
+      let nuevoPostPackageId = new Package(this.tituloInput, this.bodyInput);
+      this.packageDateService.postPackageIdPost(nuevoPostPackageId).subscribe(respuesta => this.packageCard=(respuesta));
+      this.verCard = true;
+  
+      this.tituloInput = "";
+      this.bodyInput= "";
+    }
   }
-
 }
