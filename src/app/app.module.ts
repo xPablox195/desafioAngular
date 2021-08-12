@@ -20,6 +20,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { ModalcommentsComponent } from './components/modalcomments/modalcomments.component';
+
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { MatSortModule } from '@angular/material/sort';
     HeaderComponent,
     ListadoComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    ModalcommentsComponent
   ],
   imports: [
     BrowserModule,

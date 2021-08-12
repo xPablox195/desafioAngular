@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Packagedate } from 'src/app/interfaces/interfacePackagedate';
+import { Packagedate, PackageIdPost } from 'src/app/interfaces/interfacePackagedate';
 import { PackagedateService } from 'src/app/services/packagedate.service';
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 //const ELEMENT_DATA: Packagedate[] = [
@@ -29,10 +30,12 @@ export class ListadoComponent implements OnInit {
   displayedColumns: string[] = ['userId', 'id', 'title', 'body'];
   dataSource = new MatTableDataSource();
 
+  closeModal: string = "";
+
+  packageIdPosts: PackageIdPost[] = [];
+  idpostModalAct: number = 0;
   
-  
-  
-  constructor(private servicePackagedate: PackagedateService) { }
+  constructor(private servicePackagedate: PackagedateService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.servicePackagedate.cargarPackagedate()
@@ -48,10 +51,38 @@ export class ListadoComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
+
+  triggerModal(content: any, id: number) {
+    
+    this.servicePackagedate.cargarPackageIdPosts(id)
+    .subscribe(data => (this.packageIdPosts = (data)));
+    console.log(this.packageIdPosts);
+    this.idpostModalAct = id
+    
+    this.modalService.open(content,{ariaLabelledBy: 'modal-basic-title', size: 'xl'}).result.then((res) => {
+      this.closeModal = `Closed with: ${res}`;
+    }, (res) => {
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+    });
+
+    console.log("nuevo print " + id)
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
  
+  async getPackagePosts(row: number){
+    console.log(row);
 
 
-
+  }
 }
 
 
