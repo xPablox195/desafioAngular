@@ -1,0 +1,33 @@
+<div class="container">
+    <div clss="col">
+        <h3>{{titulo}}</h3>
+    </div>
+    <hr/>
+    <form class="form-row">
+        <div class="form-group col-md-2">
+            <label for="title" class="sr-only">Título</label>
+            <input type="text" name="title" id="title" placeholder="Título" class="form-control" [(ngModel)]="tituloInput">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="body" class="sr-only">Cuerpo</label>
+            <input type="text" name="body" id="body" placeholder="body" class="form-control" [(ngModel)]="bodyInput">
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary" (click)="agregarPost()">Agregar Post</button>
+        </div>
+    </form>
+    <hr/>
+</div>
+<div class="contenedor">
+<mat-card class="tarjeta" *ngIf="verCard">
+    <mat-card-header>
+      <mat-card-title>Nuevo Post: {{packageCard.userId}}</mat-card-title>
+      <mat-card-subtitle>Este es el post generado, ID: {{packageCard.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <hr/>
+    <mat-card-content>
+      <p>Título: {{packageCard.title}}</p>
+      <p>Cuerpo: {{packageCard.body}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

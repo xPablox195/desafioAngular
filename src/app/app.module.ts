@@ -21,6 +21,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ModalcommentsComponent } from './components/modalcomments/modalcomments.component';
+import { FormularioComponent } from './pages/formulario/formulario.component';
+
+import { FormsModule } from '@angular/forms';
+
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -31,7 +36,8 @@ import { ModalcommentsComponent } from './components/modalcomments/modalcomments
     ListadoComponent,
     NavbarComponent,
     HomeComponent,
-    ModalcommentsComponent
+    ModalcommentsComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,9 @@ import { ModalcommentsComponent } from './components/modalcomments/modalcomments
     MatSliderModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    FormsModule,
+    MatCardModule
   ],
   providers: [PackagedateService],
   bootstrap: [AppComponent]

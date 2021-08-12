@@ -78,10 +78,8 @@ export class ListadoComponent implements OnInit {
     }
   }
  
-  async getPackagePosts(row: number){
-    console.log(row);
-
-
+  nuevoPost(){
+    
   }
 }
 
